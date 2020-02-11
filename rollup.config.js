@@ -1,20 +1,23 @@
-import svelte from 'rollup-plugin-svelte';
-import resolve from 'rollup-plugin-node-resolve';
-import pkg from './package.json';
-
-const name = pkg.name
-	.replace(/^(@\S+\/)?(svelte-)?(\S+)/, '$3')
-	.replace(/^\w/, m => m.toUpperCase())
-	.replace(/-\w/g, m => m[1].toUpperCase());
+import svelte from "rollup-plugin-svelte";
+import resolve from "rollup-plugin-node-resolve";
+import { terser } from "rollup-plugin-terser";
 
 export default {
-	input: 'src/index.svelte',
-	output: [
-		{ file: pkg.module, 'format': 'es' },
-		{ file: pkg.main, 'format': 'umd', name }
-	],
-	plugins: [
-		svelte(),
-		resolve()
-	]
+  input: "./src/pages/index.js",
+  output: {
+    file: "./index.js",
+    format: "iife"
+  },
+  treeshake: true,
+  plugins: [
+    resolve({
+      extensions: [".js", ".mjs", ".svelte"]
+    }),
+    svelte({
+      css: function(css) {
+        css.write("index.css", false);
+      }
+    }),
+    terser()
+  ]
 };
