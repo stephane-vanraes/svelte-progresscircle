@@ -1,6 +1,7 @@
 # Svelte Progress Circle
 
 A circular progress bar as a Svelte component.
+[Demo page](https://stephane-vanraes.github.io/svelte-progresscircle/)
 
 ## Basic usage
 
