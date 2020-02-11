@@ -3,9 +3,9 @@
   export let max = 100;
 
   $: progressPath = () => {
-    if (value === 0) {
+    if (value <= 0) {
       return "";
-    } else if (value === max) {
+    } else if (value >= max) {
       return "M50,5A45 45 0 1 1 49.9999 5";
     } else {
       const angle = Math.PI * 2 * (value / max);
