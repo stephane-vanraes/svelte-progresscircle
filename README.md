@@ -5,9 +5,7 @@ A circular progress bar as a Svelte component.
 ## Basic usage
 
 ```html
-<ProgressCircle max="10" {value}>
-    <span>{value}</span>
-</ProgressCirle>
+<ProgressCircle max="10" {value} />
 ```
 
 ## Props
@@ -22,7 +20,13 @@ The current value.
 
 ## Slotted Content
 
-The component does not show the current value by default, this is left to the consumer in the form of a slot, allowing them to style this as required.
+The component shows the current value in the center of the circle by default in a rather plain unstyled way. This is however the fallback behaviour for a slot offering the opportunity to style this to your needs:
+
+```html
+<ProgressCircle max="10" {value}>
+    <span>{value}</span>
+</ProgressCirlce>
+```
 
 ## Styling
 
